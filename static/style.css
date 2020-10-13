@@ -1,0 +1,9 @@
+body{
+    margin: 10;
+    font-family: sans-serif;
+}
+
+p{
+    color: blue;
+    text-align: left;
+}

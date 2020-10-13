@@ -10,7 +10,8 @@ from datetime import datetime
 
 # app = Flask(__name__) # to make the app run without any
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://second:second@localhost:3306/hello'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://second:second@localhost:3306/hello'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
 class Todo(db.Model):

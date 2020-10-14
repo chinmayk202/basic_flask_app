@@ -16,6 +16,7 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
+    priority = db.Column(db.Integer, nullable=False)
     completed = db.Column(db.Integer, default=0)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -26,7 +27,8 @@ class Todo(db.Model):
 def index():
     if request.method=='POST':
         task_content = request.form['content']
-        new_task = Todo(content=task_content)
+        task_priority = request.form['priority']
+        new_task = Todo(content=task_content,priority=task_priority)
 
         try:
             db.session.add(new_task)
@@ -35,7 +37,7 @@ def index():
         except:
             return "There was an issue adding your task!"
     else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
+        tasks = Todo.query.order_by(Todo.priority.desc()).all()
         return render_template('index.html',tasks=tasks)
 
 
@@ -56,6 +58,7 @@ def update(id):
 
     if request.method=='POST':
         task_to_update.content = request.form['content']
+        task_to_update.priority = request.form['priority']
         try:
             db.session.commit()
             return redirect('/')

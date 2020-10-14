@@ -17,8 +17,8 @@ h1{
       text-align: center;
 }
 
-input[type=text], select {
-    width: 50%;
+input[name='content'], select {
+    width: 35%;
     padding: 4px 8px;
     margin-left: 20%;
     margin-top: 5px;
@@ -26,6 +26,17 @@ input[type=text], select {
     border: 1px solid black;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+input[name='priority'], select {
+  width: 15%;
+  padding: 4px 8px;
+  margin-left: 0%;
+  margin-top: 5px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 input[type=submit]{
